@@ -1,0 +1,31 @@
+<form (ngSubmit)="onSubmit()" #signInForm="ngForm">
+  <md-input-container>
+    <input mdInput type="email" placeholder="Email" id="email"
+      required
+      [(ngModel)]="user.email" name="email"
+      #email="ngModel">
+  </md-input-container><br>
+  <div [hidden]="email.valid || email.pristine"
+    class="alert alert-danger">
+    Email is required
+  </div>
+  <md-input-container>
+    <input mdInput type="password" placeholder="Password" id="password"
+      required
+      [(ngModel)]="user.password" name="password"
+      #password="ngModel">
+  </md-input-container><br>
+  <div [hidden]="password.valid || password.pristine"
+    class="alert alert-danger">
+    Password is required
+  </div>
+  <button md-raised-button type="submit" [disabled]="!signInForm.form.valid">Sign in</button>
+</form>
+
+<a md-button>Log in with Facebook</a><br>
+<a md-button>Log in with Google</a>
+
+
+<br>
+<h2>Create account</h2>
+<a md-raised-button routerLink="../sign-up" routerLinkActive="active" class="btn btn-default">Sign up</a>
